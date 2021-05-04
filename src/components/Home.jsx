@@ -13,10 +13,10 @@ const Home = () => {
   {!data?(
       <h3>cargando...</h3>
   ):
- <ul>{data.operations.map((el)=>
+ <div className="text-center">{data.operations.map((el)=>
 <Element key={el._id} concept={el.concept} type={el.type} mount={el.mount} date={el.date.substring(0,10)}/>
   
- )}</ul>
+ )}</div>
  }
  </>
 );
