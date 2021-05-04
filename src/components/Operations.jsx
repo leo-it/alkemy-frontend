@@ -25,9 +25,9 @@ const [date, setDate] = useState()
     }
 
     return (
-  <>
+  <div>
   <Navbar/>
-    <div  className="container bg-white p-5 col" >
+    <div  className=" form mx-auto w-50 bg-white p-5 col" >
             <div className=" line"></div>
             <div className="mb-3 col-lg-12 formulario">
                 <label  className="form-label tre " id="">Concept</label>
@@ -38,8 +38,8 @@ const [date, setDate] = useState()
                 <input type="number" onInput={(e) => setMount(e.target.value)}  className="form-control " required/>
             </div>
             <div className="mb-3 col-lg-12">
-                <label className="form-label tre ">Date</label>
-                <input type="text"  onInput={(e) => setDate(e.target.value)} className="form-control " required/>
+                <label type="text" className="form-label tre ">Date</label>
+                <input type="date"  onInput={(e) => setDate(e.target.value)} className="form-control " required/>
             </div>
 
             <div className="mb-3 col-lg-12">
@@ -51,10 +51,11 @@ const [date, setDate] = useState()
               </div>
             <div>
                 <button onClick={handleClick} className="btn btn-secondary publicar-btn" >Post</button>
-               
-            </div>
+              
+            </div> 
     </div>
- </>
+    <hr/>
+ </div>
 );
 }
 
