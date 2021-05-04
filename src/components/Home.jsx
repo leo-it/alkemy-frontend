@@ -1,7 +1,7 @@
 import React from 'react';
 import {useFetch} from "../hooks/useFetch"
-import Element from "../components/Element"
-
+import Element from "./Element"
+import {Navbar} from "./Navbar"
 const Home = () => {
     let url="http://localhost:3000/api/operations"
     let {data, isPending, error} = useFetch(url)
@@ -10,6 +10,7 @@ const Home = () => {
     console.log(data);
     return (
   <>
+  <Navbar/>
   {!data?(
       <h3>cargando...</h3>
   ):

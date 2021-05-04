@@ -1,4 +1,6 @@
 import React,{useState} from 'react';
+import {Navbar} from "./Navbar"
+
 let url="http://localhost:3000/api/post-operation"
 
 const Operations = () => {
@@ -24,9 +26,8 @@ const [date, setDate] = useState()
 
     return (
   <>
- <h2>Operations</h2>
+  <Navbar/>
     <div  className="container bg-white p-5 col" >
-            <h4>Cargar Producto</h4>
             <div className=" line"></div>
             <div className="mb-3 col-lg-12 formulario">
                 <label  className="form-label tre " id="">Concept</label>
