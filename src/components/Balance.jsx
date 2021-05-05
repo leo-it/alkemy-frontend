@@ -6,13 +6,12 @@ import {useFetch} from "../hooks/useFetch"
  const Balance = () => {
     let {data, isPending, error} = useFetch(`${urlApi}operations`)
     console.log(data);
-let arrEgreso=[]
 let egress=0;
 let entry=0
 let cash;
     if(data){
      data.operations.map((el)=> {
-     el.type=="EGRESO"? egress+=el.mount: entry+=el.mount; 
+     el.type=="EGRESS"? egress+=el.mount: entry+=el.mount; 
   
      }
 
@@ -25,8 +24,12 @@ cash=entry-egress
 
     return(
   <>
-<h1 className="text-center">Cash: ${cash}</h1>
-
+<div className="mx-auto mb-3 card w-50">
+  <div className="card-body text-center">
+    <h3 className="card-title">Cash: ${cash} </h3>
+    <p className="card-text"> Last ten movements </p>
+  </div>
+</div>
  {
 
  } </>

@@ -45,7 +45,7 @@ const [date, setDate] = useState()
             <div className="mb-3 col-lg-12">
                 <label className="form-label tre ">Type </label>
                 <select defaultValue="EGRESS" onChange={(e) => setType(e.target.value)} >
-                    <option value="INGRESO">Ingreso</option>
+                    <option value="ENTRY">Entry</option>
                     <option value="EGRESS">EGRESS</option>
                 </select>      
               </div>

@@ -50,7 +50,7 @@ const ItemOperation = ({ dataEl }) => {
     <div onClick={() => setModify(true)}>
       {modify ? (
         <>
-          <div className="form mx-auto w-50 ">
+          <div className="form mx-auto w-100 ">
             <div className="container bg-white p-5 col">
               <div className=" line"></div>
               <div className="mb-3 col-lg-12 formulario">
@@ -94,26 +94,34 @@ const ItemOperation = ({ dataEl }) => {
       
       
       (
-        <>
-          <div className="card-body">
+        <div>
+          <div className="card-body  ">
             <h5 className="card-title">
-              {dataEl.concept}: ${dataEl.mount}
+              {dataEl.concept}: 
             </h5>
+
+             <h4>${dataEl.mount}</h4>
+
             <p className="card-text">
               {dataEl.type} Date: {dataEl.date.substring(0, 10)}
             </p>
            
           </div>
-        </>
+        </div>
       )}
     </div>
       {modify ? (
+        <div>
         <button className="btn btn-primary publicar-btn" onClick={handleClick}>
           Upload
         </button>
-      ) : (
         <button className="btn btn-danger publicar-btn"   onClick={handleDelete} >Delete</button>
-      )}
+
+        </div>
+      ) : (
+        <></>
+/*         <button className="btn btn-danger publicar-btn"   onClick={handleDelete} >Delete</button>
+ */      )}
       </>
   );
 };

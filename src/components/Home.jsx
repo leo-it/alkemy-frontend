@@ -22,7 +22,7 @@ const Home = () => {
       ) : (
         <div className="text-center">
           {data.operations
-            .slice(Math.max(data.operations.length - 10, 1))
+            .slice(Math.max(data.operations.length - 9, 0))
             .reverse()
             .map((el, index) => (
               <ItemOperation key={el._id} dataEl={el} />
