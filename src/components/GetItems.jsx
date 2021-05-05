@@ -4,11 +4,8 @@ import {urlApi} from "../constants/urls"
 import Loader from "./Loader";
 import ItemOperation from './ItemOperation';
 
-
 const GetItems = (props)=>{
     let { data } = useFetch(`${urlApi}operations`);
-
- 
     return(
     <>
  {!data ? (

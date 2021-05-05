@@ -37,7 +37,7 @@ return(
             </div>
             <div className="mb-3  col-sm-12">
                 <label type="text" className="form-label tre ">Date</label>
-                <input type="date"  onInput={(e) => setDate(e.target.value)} className="form-control " required/>
+                <input type="date" min="2020-01-01" max="2022-01-01" onInput={(e) => setDate(e.target.value)} className="form-control " required/>
             </div>
 
             <div className="mb-3  col-sm-12">
