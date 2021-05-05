@@ -22,7 +22,7 @@ const ItemOperation = ({ dataEl }) => {
           concept: updateConcept,
           mount: updateMount,
           date: updateDate,
-          /* type: updateType, */
+         
         }),
       }).then((res) => res.json())
       .then(res => {
