@@ -4,22 +4,24 @@ import {useFetch} from "../hooks/useFetch"
 
 
  const Balance = () => {
-    let {data, isPending, error} = useFetch(`${urlApi}operations`)
-    console.log(data);
-let egress=0;
+    let {data} = useFetch(`${urlApi}operations`)
+/*     console.log(data);
+ */let egress=0;
 let entry=0
 let cash;
     if(data){
-     data.operations.map((el)=> {
-     el.type=="EGRESS"? egress+=el.mount: entry+=el.mount; 
-  
+      data.operations.forEach(el=>{
+        el.type==="EGRESS"? egress+=el.mount : entry+=el.mount; 
+
+      })
+    /*  data.operations.map((el)=> {
+     el.type==="EGRESS"? egress+=el.mount : entry+=el.mount; 
+     }
+    ) */
      }
 
-      )
-     }
-
-console.log(egress);
-console.log(entry);
+/* console.log(egress);
+console.log(entry); */
 cash=entry-egress
 
     return(

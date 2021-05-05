@@ -4,11 +4,11 @@ import {urlApi} from "../constants/urls"
 const ItemOperation = ({ dataEl }) => {
   /*     console.log(dataEl._id);
    */ 
-  const { concept, mount, type, date } = dataEl;
+  const { concept, mount,  date } = dataEl;
   const [updateConcept, setUpdateConcept] = useState(concept);
   const [updateMount, setUpdateMount] = useState(mount);
-  const [updateType, setUpdateType] = useState(type);
-  const [updateDate, setUpdateDate] = useState(date);
+/*   const [updateType, setUpdateType] = useState(type);
+ */  const [updateDate, setUpdateDate] = useState(date);
 
   const [modify, setModify] = useState(false);
   function handleClick() {
@@ -22,7 +22,7 @@ const ItemOperation = ({ dataEl }) => {
           concept: updateConcept,
           mount: updateMount,
           date: updateDate,
-          type: updateType,
+          /* type: updateType, */
         }),
       }).then((res) => res.json())
       .then(res => {
@@ -97,7 +97,7 @@ const ItemOperation = ({ dataEl }) => {
         <div className="">
           <div className="card-body row ">
             
-            {dataEl.type=="EGRESS"?
+            {dataEl.type==="EGRESS"?
             <>
             <h5 className="col text-secondary"> {dataEl.concept}: </h5>
              <h4 className="text-danger col" >${dataEl.mount}</h4>
