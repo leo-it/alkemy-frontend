@@ -20,7 +20,7 @@ const [date, setDate] = useState()
                 body: JSON.stringify({mount, concept, date, type})
             }).then(res => res.json())
             .then(res => {
-                if(res.ok) window.location.reload();
+                 window.location.reload();
             });
         }
     }
@@ -51,7 +51,7 @@ const [date, setDate] = useState()
                 </select>      
               </div>
             <div>
-                <button onClick={handleClick} className="btn btn-secondary publicar-btn" >Post</button>
+                <button type="button" onClick={handleClick} className="btn btn-secondary publicar-btn" >Post</button>
               
             </div> 
     </div>

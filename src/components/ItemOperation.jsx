@@ -86,18 +86,6 @@ const ItemOperation = ({ dataEl }) => {
                   className="form-control "
                 />
               </div>
-
-             {/*  <div className="mb-3 col-lg-12">
-                <select className="form-control form-control-sm"
-                  defaultValue={type}
-                  onChange={(e) => {
-                    setUpdateType(e.target.value);
-                  }}
-                >
-                  <option value="INGRESO">Ingreso</option>
-                  <option value="EGRESO">Egreso</option>
-                </select>
-              </div> */}
               <div></div>
             </div>
           </div>
