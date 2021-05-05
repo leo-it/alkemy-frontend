@@ -27,22 +27,23 @@ const [date, setDate] = useState()
     return (
   <div>
   <Navbar/>
-    <div  className=" form mx-auto w-50 bg-white p-5 col" >
+  <div className="container col-lg-6">
+    <div  className=" form mx-auto row bg-white p-5 col" >
             <div ></div>
-            <div className="mb-3 col-lg-12 formulario">
+            <div className="mb-3 col-sm-12 formulario">
                 <label  className="form-label tre " id="">Concept</label>
                 <input type="text"  onInput={(e) => setConcept(e.target.value)} className="form-control " required/>
             </div>
-            <div className="mb-3 col-lg-12">
+            <div className="mb-3 col-sm-12">
                 <label className="form-label tre ">Mount</label>
                 <input type="number" onInput={(e) => setMount(e.target.value)}  className="form-control " required/>
             </div>
-            <div className="mb-3 col-lg-12">
+            <div className="mb-3  col-sm-12">
                 <label type="text" className="form-label tre ">Date</label>
                 <input type="date"  onInput={(e) => setDate(e.target.value)} className="form-control " required/>
             </div>
 
-            <div className="mb-3 col-lg-12">
+            <div className="mb-3  col-sm-12">
                 <label className="form-label tre ">Type </label>
                 <select defaultValue="EGRESS" onChange={(e) => setType(e.target.value)} >
                     <option value="ENTRY">Entry</option>
@@ -55,6 +56,7 @@ const [date, setDate] = useState()
             </div> 
     </div>
     <hr/>
+ </div>
  </div>
 );
 }
