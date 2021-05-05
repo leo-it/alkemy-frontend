@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-let urlApi = "http://localhost:3000/api/";
+import {urlApi} from "../constants/urls"
+
 const ItemOperation = ({ dataEl }) => {
   /*     console.log(dataEl._id);
    */ 
@@ -101,7 +102,10 @@ const ItemOperation = ({ dataEl }) => {
             </div>
           </div>
         </>
-      ) : (
+      ) : 
+      
+      
+      (
         <>
           <div className="card-body">
             <h5 className="card-title">

@@ -1,5 +1,6 @@
 import React,{useState} from 'react';
 import {Navbar} from "./Navbar"
+import {urlApi} from "../constants/urls"
 
 let url="http://localhost:3000/api/post-operation"
 
@@ -11,7 +12,7 @@ const [date, setDate] = useState()
 
     function handleClick(){
         if(mount && concept && date && type){
-            fetch(`${url}`,{
+            fetch(`${urlApi}post-operation`,{
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -28,7 +29,7 @@ const [date, setDate] = useState()
   <div>
   <Navbar/>
     <div  className=" form mx-auto w-50 bg-white p-5 col" >
-            <div className=" line"></div>
+            <div ></div>
             <div className="mb-3 col-lg-12 formulario">
                 <label  className="form-label tre " id="">Concept</label>
                 <input type="text"  onInput={(e) => setConcept(e.target.value)} className="form-control " required/>
