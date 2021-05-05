@@ -87,7 +87,7 @@ const ItemOperation = ({ dataEl }) => {
                 />
               </div>
 
-              <div className="mb-3 col-lg-12">
+             {/*  <div className="mb-3 col-lg-12">
                 <select className="form-control form-control-sm"
                   defaultValue={type}
                   onChange={(e) => {
@@ -97,7 +97,7 @@ const ItemOperation = ({ dataEl }) => {
                   <option value="INGRESO">Ingreso</option>
                   <option value="EGRESO">Egreso</option>
                 </select>
-              </div>
+              </div> */}
               <div></div>
             </div>
           </div>
