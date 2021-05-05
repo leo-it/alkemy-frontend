@@ -96,11 +96,18 @@ const ItemOperation = ({ dataEl }) => {
       (
         <div>
           <div className="card-body  ">
-            <h5 className="card-title">
-              {dataEl.concept}: 
-            </h5>
-
-             <h4>${dataEl.mount}</h4>
+            
+            {dataEl.type=="EGRESS"?
+            <>
+            <h5 className=""> {dataEl.concept}: </h5>
+             <h4 className="text-danger" >${dataEl.mount}</h4>
+             </>
+             :
+             <>
+             <h5 className=""> {dataEl.concept}: </h5>
+             <h4 className="text-primary">${dataEl.mount}</h4>
+             </>
+          }
 
             <p className="card-text">
               {dataEl.type} Date: {dataEl.date.substring(0, 10)}
