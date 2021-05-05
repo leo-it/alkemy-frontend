@@ -14,8 +14,8 @@ const Home = () => {
     <>
       <Navbar className="  " />
     <Balance />
-     <div className="mx-auto  card w-50">
-
+     <div className="mx-auto container ">
+<div className="">
       
       {!data ? (
         <h3>cargando...</h3>
@@ -29,7 +29,7 @@ const Home = () => {
             ))}
         </div>
       )}
-
+</div>
 </div>
     </>
   );

@@ -26,7 +26,7 @@ cash=entry-egress
   <>
 <div className="mx-auto mb-3 card w-50">
   <div className="card-body text-center">
-   {cash>0? <h3 className="card-title text-primary">Cash: ${cash} </h3>:<h3 className="card-title text-danger">Cash: ${cash} </h3> }
+   {cash>0? <h3 className="card-title text-info">Cash: ${cash} </h3>:<h3 className="card-title text-danger">Cash: ${cash} </h3> }
     <p className="card-text"> Last ten movements </p>
   </div>
 </div>
