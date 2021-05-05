@@ -2,12 +2,11 @@ import React,{useState} from 'react';
 import {Navbar} from "./Navbar"
 import {urlApi} from "../constants/urls"
 
-let url="http://localhost:3000/api/post-operation"
 
 const Operations = () => {
 const [mount, setMount] = useState()
 const [concept, setConcept] = useState()
-const [type, setType] = useState("EGRESO")
+const [type, setType] = useState("EGRESS")
 const [date, setDate] = useState()
 
     function handleClick(){
@@ -45,9 +44,9 @@ const [date, setDate] = useState()
 
             <div className="mb-3 col-lg-12">
                 <label className="form-label tre ">Type </label>
-                <select defaultValue="EGRESO" onChange={(e) => setType(e.target.value)} >
+                <select defaultValue="EGRESS" onChange={(e) => setType(e.target.value)} >
                     <option value="INGRESO">Ingreso</option>
-                    <option value="EGRESO">Egreso</option>
+                    <option value="EGRESS">EGRESS</option>
                 </select>      
               </div>
             <div>

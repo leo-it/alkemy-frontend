@@ -1,17 +1,22 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useFetch } from "../hooks/useFetch";
 import { Navbar } from "./Navbar";
 import ItemOperation from "./ItemOperation";
 import Balance from "./Balance";
+import {urlApi} from "../constants/urls"
+
 
 const Home = () => {
-  let url = "http://localhost:3000/api/";
-  let { data, isPending, error } = useFetch(`${url}operations`);
+ 
+  let { data } = useFetch(`${urlApi}operations`);
 
   return (
     <>
       <Navbar className="  " />
-      <Balance />
+    <Balance />
+     <div className="mx-auto  card w-50">
+
+      
       {!data ? (
         <h3>cargando...</h3>
       ) : (
@@ -24,6 +29,8 @@ const Home = () => {
             ))}
         </div>
       )}
+
+</div>
     </>
   );
 };
