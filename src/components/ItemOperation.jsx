@@ -4,11 +4,12 @@ import {urlApi} from "../constants/urls"
 const ItemOperation = ({ dataEl }) => {
   /*     console.log(dataEl._id);
    */ 
-  const { concept, mount,  date } = dataEl;
+  const { concept, mount,  date, category } = dataEl;
   const [updateConcept, setUpdateConcept] = useState(concept);
   const [updateMount, setUpdateMount] = useState(mount);
 /*   const [updateType, setUpdateType] = useState(type);
  */  const [updateDate, setUpdateDate] = useState(date);
+ const [updateCategory, setUpdateCategory] = useState(category);
 
   const [modify, setModify] = useState(false);
   function handleClick() {
@@ -22,6 +23,7 @@ const ItemOperation = ({ dataEl }) => {
           concept: updateConcept,
           mount: updateMount,
           date: updateDate,
+          category: updateCategory
          
         }),
       }).then((res) => res.json())
@@ -86,6 +88,17 @@ const ItemOperation = ({ dataEl }) => {
                   className="form-control "
                 />
               </div>
+
+              <div className="mb-3  col-sm-12">
+            <select defaultValue="food" onChange={(e) => setUpdateCategory(e.target.value)} >
+                <option value="food">Food</option>
+                <option value="clothes">Clothes</option>
+                <option value="cleaning">Cleaning</option>
+                <option value="salary">Salary</option>
+                <option value="other">Other</option>
+
+            </select></div>
+
             </div>
           </div>
         </>
@@ -98,20 +111,22 @@ const ItemOperation = ({ dataEl }) => {
             
             {dataEl.type==="EGRESS"?
             <>
-            <h5 className=" text-capitalize col-lg-3 col-sm-6 text-secondary"> {dataEl.concept}: </h5>
-             <h4 className="text-danger col-lg-3 col-sm-6" >${dataEl.mount}</h4>
-             <p className="card-text text-danger col-lg-3 col-sm-6">{dataEl.type}</p>
+            <h5 className=" text-capitalize col-lg-2 col-sm-6 text-dark"> {dataEl.concept}: </h5>
+             <h4 className="text-danger col-lg-2 col-sm-6" >${dataEl.mount}</h4>
+             <p className="card-text text-danger col-lg-2 col-sm-6">{dataEl.type}</p>
+             <p className="card-text text-secondary col-lg-2 col-sm-6"> {dataEl.category}</p>
              </>
              :
              <>
-            <h5 className="text-capitalize col-lg-3 col-sm-6"> {dataEl.concept}: </h5>
-             <h4 className="text-success col-lg-3 col-sm-6" >${dataEl.mount}</h4>
-             <p className="card-text text-success col-lg-3 col-sm-6">{dataEl.type}</p>
-             
+            <h5 className="text-capitalize col-lg-2 col-sm-6"> {dataEl.concept}: </h5>
+             <h4 className="text-success col-lg-2 col-sm-6" >${dataEl.mount}</h4>
+             <p className="card-text text-success col-lg-2 col-sm-6">{dataEl.type}</p>
+             <p className="card-text text-secondary col-lg-2 col-sm-6"> {dataEl.category}</p>
+
              </>
           }
 
-            <p className="card-text text-secondary col-lg-3 col-sm-6">
+            <p className="card-text text-secondary col-lg-2 col-sm-6">
                {dataEl.date.substring(0, 10)}
             </p>
            

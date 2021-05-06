@@ -7,15 +7,16 @@ const [mount, setMount] = useState()
 const [concept, setConcept] = useState()
 const [type, setType] = useState("EGRESS")
 const [date, setDate] = useState()
+const [category, setCategory] = useState("food")
 
     function handleClick(){
-        if(mount && concept && date && type){
+        if(mount && concept && date && type && category){
             fetch(`${urlApi}post-operation`,{
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({mount, concept, date, type})
+                body: JSON.stringify({mount, concept, date, type, category})
             }).then(res => res.json())
             .then(res => {
                  window.location.reload();
@@ -42,13 +43,22 @@ return(
 
             <div className="mb-3  col-sm-12">
                 <label className="form-label tre ">Type </label>
-                <select defaultValue="EGRESS" onChange={(e) => setType(e.target.value)} >
+                <select defaultValue="EGRESS"   onChange={(e) => setType(e.target.value)} >
                     <option value="ENTRY">Entry</option>
                     <option value="EGRESS">EGRESS</option>
                 </select>      
               </div>
+            <div className="mb-3  col-sm-12">
+            <select defaultValue="food" onChange={(e) => setCategory(e.target.value)} >
+                <option value="food">Food</option>
+                <option value="clothes">Clothes</option>
+                <option value="cleaning">Cleaning</option>
+                <option value="salary">Salary</option>
+                <option value="other">Other</option>
+
+            </select></div>
             <div>
-                <button type="button" onClick={handleClick} className="btn btn-secondary publicar-btn" >Post</button>
+                <button type="button" onClick={handleClick} className="btn btn-primary publicar-btn" >Post</button>
               
             </div> 
     </div>
