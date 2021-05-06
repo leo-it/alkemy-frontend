@@ -86,8 +86,8 @@ const ItemOperation = ({ dataEl }) => {
                   />
                 </div>
 
-                <div className="mb-3  col-sm-12">
-                  <select
+                <div className="mb-3 mx-auto col-lg-8">
+                  <select className="form-select  "
                     defaultValue="food"
                     onChange={(e) => setUpdateCategory(e.target.value)}
                   >

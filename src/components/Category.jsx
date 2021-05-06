@@ -23,6 +23,7 @@ const Category = (props) => {
           className="btn btn-secondary publicar-btn"
         >
           Food
+        
         </button>
         <button
           value="salary"

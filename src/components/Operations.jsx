@@ -8,7 +8,11 @@ const Operations = () => {
     <div>
       <Navbar />
       <Form />
-      <hr />
+      <br />
+      <h2 className="text-center">Submit Operations</h2>
+      <br/>
+      <br/>
+      <hr/>
       <GetItems large={100} />
     </div>
   );

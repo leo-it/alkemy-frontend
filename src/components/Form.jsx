@@ -40,7 +40,7 @@ const Form = () => {
             />
           </div>
           <div className="mb-3 col-sm-12">
-            <label className="form-label tre ">Mount</label>
+            <label className="form-label tre ">Amount</label>
             <input
               type="number"
               onInput={(e) => setMount(e.target.value)}
@@ -63,8 +63,8 @@ const Form = () => {
           </div>
 
           <div className="mb-3  col-sm-12">
-            <label className="form-label tre ">Type </label>
-            <select
+            <label className="form-label tre "> </label>
+            <select className="form-select "
               defaultValue="EGRESS"
               onChange={(e) => setType(e.target.value)}
             >
@@ -73,7 +73,7 @@ const Form = () => {
             </select>
           </div>
           <div className="mb-3  col-sm-12">
-            <select
+            <select className="form-select "
               defaultValue="food"
               onChange={(e) => setCategory(e.target.value)}
             >
@@ -94,7 +94,6 @@ const Form = () => {
             </button>
           </div>
         </div>
-        <hr />
       </div>
     </>
   );
