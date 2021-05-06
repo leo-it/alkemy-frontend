@@ -12,8 +12,6 @@ function App() {
       <Route path="/" exact component={Home}/>
       <Route path="/operations" component={Operations}/>
       <Route path="/category" component={Category}/>
-
-
     </Switch>
     </BrowserRouter>
   );
