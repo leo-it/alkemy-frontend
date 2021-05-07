@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { urlApi } from "../constants/urls";
+import swal from 'sweetalert'
 
 const Form = () => {
   const [mount, setMount] = useState();
@@ -21,6 +22,8 @@ const Form = () => {
         .then((res) => {
           window.location.reload();
         });
+    }else{
+      swal("complete the fields please");
     }
   }
   return (
