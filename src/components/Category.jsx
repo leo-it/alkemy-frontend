@@ -1,39 +1,56 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useFetch } from "../hooks/useFetch";
 import { urlApi } from "../constants/urls";
 import Loader from "./Loader";
 import ItemOperation from "./ItemOperation";
 import { Navbar } from "./Navbar";
+import { Redirect } from "react-router-dom";
 
 const Category = (props) => {
+  const [loading, setLoading] = useState(true);
+
   const [category, setCategory] = useState("salary");
   const [data, setData] = useState();
   const [token, setToken] = useState();
-        useEffect(() => {
-          const sessiontoken = window.localStorage.getItem('SESSION_TOKEN');
-          if(sessiontoken){
-              setToken(sessiontoken)
-          };
-      }, []);
-
- fetch(`${urlApi}operations/category/${category}`,{
-    method: 'GET',
-    headers: {
-        'Content-Type': 'application/json',
-        'x-access-token': token
+  useEffect(() => {
+    const sessiontoken = window.localStorage.getItem("SESSION_TOKEN");
+    if (sessiontoken) {
+      setToken(sessiontoken);
     }
-})
-.then(res => res.json())
-.then(res => { if(res){ setData(res)}
-}) 
+    setLoading(false);
+  }, []);
+
+  function getOperations() {
+    fetch(`${urlApi}operations/category/${category}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "x-access-token": token,
+      },
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        if (res) {
+          setData(res);
+        }
+      });
+  }
+  useEffect(getOperations, []);
+
   function handleClick(e) {
     setCategory(e.target.value);
   }
 
+  if (!loading && !token) return <Redirect to="/login" />;
+  else if (loading)
+    return (
+      <img src="https://media.istockphoto.com/vectors/website-information-loading-frame-icon-vector-id1084034376" />
+    );
+
   return (
     <>
       <Navbar />
-<br/>
+      <br />
       <div className="text-center">
         <button
           value="food"
@@ -41,7 +58,6 @@ const Category = (props) => {
           className="btn btn-secondary publicar-btn"
         >
           Food
-        
         </button>
         <button
           value="salary"
@@ -72,7 +88,7 @@ const Category = (props) => {
           Other
         </button>
       </div>
-      <br/> <hr/>
+      <br /> <hr />
       {!data ? (
         <Loader />
       ) : (

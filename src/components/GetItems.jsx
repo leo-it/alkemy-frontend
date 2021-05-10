@@ -1,30 +1,38 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import { useFetch } from "../hooks/useFetch";
 import { urlApi } from "../constants/urls";
 import Loader from "./Loader";
 import ItemOperation from "./ItemOperation";
-import {Redirect} from 'react-router-dom';
+import { Redirect } from "react-router-dom";
 
 const GetItems = (props) => {
- const [data, setData] = useState();
+  const [data, setData] = useState();
 
- fetch(`${urlApi}operations`,{
-    method: 'GET',
-    headers: {
-        'Content-Type': 'application/json',
-        'x-access-token': props.token
-    }
-})
-.then(res => res.json())
-.then(res => { if(res){ setData(res)}
-}) 
+  function getOperations() {
+    fetch(`${urlApi}operations`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "x-access-token": props.token,
+      },
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        if (res) {
+          setData(res);
+        }
+      });
+  }
+  /*  getOperations()
+   */ useEffect(getOperations, []);
 
-/* console.log(operation.operations);
- */ 
+  console.log();
+  /* console.log(operation.operations);
+   */
 
   return (
     <>
-      {!data? (
+      {!data ? (
         <Loader />
       ) : (
         <>
@@ -42,7 +50,7 @@ const GetItems = (props) => {
                 .slice(Math.max(data.operations.length - props.large, 0))
                 .reverse()
                 .map((el, index) => (
-                  <ItemOperation key={el._id} dataEl={el} token={props.token}/>
+                  <ItemOperation key={el._id} dataEl={el} token={props.token} />
                 ))}
             </div>
           )}

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { urlApi } from "../constants/urls";
-import swal from 'sweetalert'
+import swal from "sweetalert";
 
-const Form = ({token}) => {
+const Form = ({ token }) => {
   const [mount, setMount] = useState();
   const [concept, setConcept] = useState();
   const [type, setType] = useState("EGRESS");
@@ -14,7 +14,7 @@ const Form = ({token}) => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          'x-access-token': token
+          "x-access-token": token,
         },
         body: JSON.stringify({ mount, concept, date, type, category }),
       })
@@ -22,7 +22,7 @@ const Form = ({token}) => {
         .then((res) => {
           window.location.reload();
         });
-    }else{
+    } else {
       swal("complete the fields please");
     }
   }
@@ -67,7 +67,8 @@ const Form = ({token}) => {
 
           <div className="mb-3  col-sm-12">
             <label className="form-label tre "> </label>
-            <select className="form-select "
+            <select
+              className="form-select "
               defaultValue="EGRESS"
               onChange={(e) => setType(e.target.value)}
             >
@@ -76,7 +77,8 @@ const Form = ({token}) => {
             </select>
           </div>
           <div className="mb-3  col-sm-12">
-            <select className="form-select "
+            <select
+              className="form-select "
               defaultValue="food"
               onChange={(e) => setCategory(e.target.value)}
             >

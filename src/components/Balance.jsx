@@ -14,6 +14,10 @@ const Balance = () => {
           setToken(sessiontoken)
       };
   }, []);
+
+
+  function getOperations(){
+
    fetch(`${urlApi}operations`,{
       method: 'GET',
       headers: {
@@ -24,8 +28,9 @@ const Balance = () => {
   .then(res => res.json())
     .then(res => { if(res){ setData(res)}
   })
- 
+}
   
+useEffect(getOperations, []);
 
 
   let egress = 0;

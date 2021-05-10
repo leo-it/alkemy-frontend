@@ -10,14 +10,12 @@ const ItemOperation = ({ dataEl, token }) => {
 
   const [modify, setModify] = useState(false);
   function handleClick() {
-   
     if (updateConcept || updateMount) {
-     
       fetch(`${urlApi}put-operation/${dataEl._id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
-          'x-access-token': token
+          "x-access-token": token,
         },
         body: JSON.stringify({
           concept: updateConcept,
@@ -38,8 +36,7 @@ const ItemOperation = ({ dataEl, token }) => {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
-        'x-access-token': token
-
+        "x-access-token": token,
       },
       body: JSON.stringify({ id: dataEl.id }),
     })
@@ -92,7 +89,8 @@ const ItemOperation = ({ dataEl, token }) => {
                 </div>
 
                 <div className="mb-3 mx-auto col-lg-8">
-                  <select className="form-select  "
+                  <select
+                    className="form-select  "
                     defaultValue="food"
                     onChange={(e) => setUpdateCategory(e.target.value)}
                   >
