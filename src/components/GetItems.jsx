@@ -1,18 +1,34 @@
-import React from "react";
+import React, { useEffect, useState } from 'react';
 import { useFetch } from "../hooks/useFetch";
 import { urlApi } from "../constants/urls";
 import Loader from "./Loader";
 import ItemOperation from "./ItemOperation";
+import {Redirect} from 'react-router-dom';
 
 const GetItems = (props) => {
-  let { data } = useFetch(`${urlApi}operations`);
+ const [data, setData] = useState();
+
+ fetch(`${urlApi}operations`,{
+    method: 'GET',
+    headers: {
+        'Content-Type': 'application/json',
+        'x-access-token': props.token
+    }
+})
+.then(res => res.json())
+.then(res => { if(res){ setData(res)}
+}) 
+
+/* console.log(operation.operations);
+ */ 
+
   return (
     <>
-      {!data ? (
+      {!data? (
         <Loader />
       ) : (
         <>
-          {data.operations.length === 0 ? (
+          {data.operations === 0 ? (
             <div className="text-center">
               <h1>You did not register any movement </h1>
               <img
@@ -26,7 +42,7 @@ const GetItems = (props) => {
                 .slice(Math.max(data.operations.length - props.large, 0))
                 .reverse()
                 .map((el, index) => (
-                  <ItemOperation key={el._id} dataEl={el} />
+                  <ItemOperation key={el._id} dataEl={el} token={props.token}/>
                 ))}
             </div>
           )}

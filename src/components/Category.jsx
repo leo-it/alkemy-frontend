@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { useFetch } from "../hooks/useFetch";
 import { urlApi } from "../constants/urls";
 import Loader from "./Loader";
@@ -7,7 +7,25 @@ import { Navbar } from "./Navbar";
 
 const Category = (props) => {
   const [category, setCategory] = useState("salary");
-  let { data } = useFetch(`${urlApi}operations/category/${category}`);
+  const [data, setData] = useState();
+  const [token, setToken] = useState();
+        useEffect(() => {
+          const sessiontoken = window.localStorage.getItem('SESSION_TOKEN');
+          if(sessiontoken){
+              setToken(sessiontoken)
+          };
+      }, []);
+
+ fetch(`${urlApi}operations/category/${category}`,{
+    method: 'GET',
+    headers: {
+        'Content-Type': 'application/json',
+        'x-access-token': token
+    }
+})
+.then(res => res.json())
+.then(res => { if(res){ setData(res)}
+}) 
   function handleClick(e) {
     setCategory(e.target.value);
   }

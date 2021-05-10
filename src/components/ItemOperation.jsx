@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { urlApi } from "../constants/urls";
 
-const ItemOperation = ({ dataEl }) => {
+const ItemOperation = ({ dataEl, token }) => {
   const { concept, mount, date, category } = dataEl;
   const [updateConcept, setUpdateConcept] = useState(concept);
   const [updateMount, setUpdateMount] = useState(mount);
@@ -10,11 +10,14 @@ const ItemOperation = ({ dataEl }) => {
 
   const [modify, setModify] = useState(false);
   function handleClick() {
+   
     if (updateConcept || updateMount) {
+     
       fetch(`${urlApi}put-operation/${dataEl._id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
+          'x-access-token': token
         },
         body: JSON.stringify({
           concept: updateConcept,
@@ -25,7 +28,7 @@ const ItemOperation = ({ dataEl }) => {
       })
         .then((res) => res.json())
         .then((res) => {
-          if (res.ok) window.location.reload();
+          if (res) window.location.reload();
         });
     }
   }
@@ -35,6 +38,8 @@ const ItemOperation = ({ dataEl }) => {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
+        'x-access-token': token
+
       },
       body: JSON.stringify({ id: dataEl.id }),
     })

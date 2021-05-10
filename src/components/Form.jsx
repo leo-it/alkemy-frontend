@@ -2,19 +2,19 @@ import React, { useState } from "react";
 import { urlApi } from "../constants/urls";
 import swal from 'sweetalert'
 
-const Form = () => {
+const Form = ({token}) => {
   const [mount, setMount] = useState();
   const [concept, setConcept] = useState();
   const [type, setType] = useState("EGRESS");
   const [date, setDate] = useState();
   const [category, setCategory] = useState("food");
-
   function handleClick() {
     if (mount && concept && date && type && category) {
       fetch(`${urlApi}post-operation`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          'x-access-token': token
         },
         body: JSON.stringify({ mount, concept, date, type, category }),
       })
