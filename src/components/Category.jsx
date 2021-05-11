@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useFetch } from "../hooks/useFetch";
 import { urlApi } from "../constants/urls";
 import Loader from "./Loader";
 import ItemOperation from "./ItemOperation";
@@ -7,7 +6,6 @@ import { Navbar } from "./Navbar";
 import { Redirect } from "react-router-dom";
 
 const Category = (props) => {
-
   const [token, setToken] = useState();
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState();
@@ -21,7 +19,8 @@ const Category = (props) => {
     setLoading(false);
   }, []);
 
- /*  function getOperations() {
+
+  useEffect(() => {
     fetch(`${urlApi}operations/category/${category}`, {
       method: "GET",
       headers: {
@@ -35,39 +34,19 @@ const Category = (props) => {
           setData(res);
         }
       });
-  }
-   useEffect(getOperations, []); */
-useEffect(() => {
-  fetch(`${urlApi}operations/category/${category}`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      "x-access-token": token,
-    },
-  })
-    .then((res) => res.json())
-    .then((res) => {
-      if (res) {
-        setData(res);
-      }
-    });
-}, [token, category])
-/*    getOperations()
- */  
-   function handleClick(e) {
+  }, [token, category]);
+  /*    getOperations()
+   */
+  function handleClick(e) {
     setCategory(e.target.value);
   }
 
-
   if (!loading && !token) return <Redirect to="/login" />;
-  else if (loading)
-    return (
-      <Loader />
-    );
+  else if (loading) return <Loader />;
 
   return (
     <>
-      <Navbar />
+      <Navbar token={token}/>
       <br />
       <div className="text-center">
         <button
@@ -109,8 +88,8 @@ useEffect(() => {
       <br /> <hr />
       {!data ? (
         <>
-        <Loader />
-        <h1>elig</h1>
+          <Loader />
+          <h1>elig</h1>
         </>
       ) : (
         <>

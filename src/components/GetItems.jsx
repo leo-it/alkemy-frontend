@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { useFetch } from "../hooks/useFetch";
 import { urlApi } from "../constants/urls";
 import Loader from "./Loader";
 import ItemOperation from "./ItemOperation";
-import { Redirect } from "react-router-dom";
 
 const GetItems = (props) => {
   const [data, setData] = useState();
@@ -23,12 +21,8 @@ const GetItems = (props) => {
         }
       });
   }
-  /*  getOperations()
-   */ useEffect(getOperations, []);
+  useEffect(getOperations, []);
 
-  console.log();
-  /* console.log(operation.operations);
-   */
 
   return (
     <>

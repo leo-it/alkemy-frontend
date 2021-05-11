@@ -3,6 +3,7 @@ import { Navbar } from "./Navbar";
 import Balance from "./Balance";
 import GetItems from "./GetItems";
 import { Redirect } from "react-router-dom";
+import Loader from "./Loader";
 
 const Home = () => {
   const [token, setToken] = useState();
@@ -19,8 +20,8 @@ const Home = () => {
   if (!loading && !token) return <Redirect to="/login" />;
   else if (loading)
     return (
-      <img src="https://media.istockphoto.com/vectors/website-information-loading-frame-icon-vector-id1084034376" />
-    );
+      <Loader />
+      );
 
   return (
     <>

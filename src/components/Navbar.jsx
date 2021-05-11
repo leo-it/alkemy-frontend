@@ -1,6 +1,4 @@
 import React from "react";
-import { urlApi } from "../constants/urls";
-import { Redirect } from "react-router-dom";
 
 export const Navbar = ({ token }) => {
   const handleClick = () => {
@@ -36,23 +34,25 @@ export const Navbar = ({ token }) => {
                 </a>
               </div>
             )}
-            <div className="navbar-nav">
-              <a className="nav-link" href="/category">
-                Categories
-              </a>
-            </div>
-            { !token &&
+            {token && (
+              <div className="navbar-nav">
+                <a className="nav-link" href="/category">
+                  Categories
+                </a>
+              </div>
+            )}
 
-            <div className="navbar-nav">
-              <a className="nav-link" href="/login">
-                login
-              </a>
-            </div>
-}  {" "}
             {token && (
               <div className="navbar-nav">
                 <a className="nav-link" onClick={handleClick} href="/login">
                   logout
+                </a>
+              </div>
+            )}
+            {!token && (
+              <div className="navbar-nav">
+                <a className="nav-link" href="/login">
+                  login
                 </a>
               </div>
             )}
