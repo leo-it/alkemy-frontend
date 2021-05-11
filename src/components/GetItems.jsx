@@ -36,7 +36,7 @@ const GetItems = (props) => {
         <Loader />
       ) : (
         <>
-          {data.operations === 0 ? (
+          {data.operations.length === 0 ? (
             <div className="text-center">
               <h1>You did not register any movement </h1>
               <img

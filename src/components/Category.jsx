@@ -7,11 +7,12 @@ import { Navbar } from "./Navbar";
 import { Redirect } from "react-router-dom";
 
 const Category = (props) => {
-  const [loading, setLoading] = useState(true);
 
-  const [category, setCategory] = useState("salary");
-  const [data, setData] = useState();
   const [token, setToken] = useState();
+  const [loading, setLoading] = useState(true);
+  const [data, setData] = useState();
+  const [category, setCategory] = useState("salary");
+
   useEffect(() => {
     const sessiontoken = window.localStorage.getItem("SESSION_TOKEN");
     if (sessiontoken) {
@@ -20,7 +21,7 @@ const Category = (props) => {
     setLoading(false);
   }, []);
 
-  function getOperations() {
+ /*  function getOperations() {
     fetch(`${urlApi}operations/category/${category}`, {
       method: "GET",
       headers: {
@@ -35,16 +36,33 @@ const Category = (props) => {
         }
       });
   }
-  useEffect(getOperations, []);
-
-  function handleClick(e) {
+   useEffect(getOperations, []); */
+useEffect(() => {
+  fetch(`${urlApi}operations/category/${category}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      "x-access-token": token,
+    },
+  })
+    .then((res) => res.json())
+    .then((res) => {
+      if (res) {
+        setData(res);
+      }
+    });
+}, [token, category])
+/*    getOperations()
+ */  
+   function handleClick(e) {
     setCategory(e.target.value);
   }
+
 
   if (!loading && !token) return <Redirect to="/login" />;
   else if (loading)
     return (
-      <img src="https://media.istockphoto.com/vectors/website-information-loading-frame-icon-vector-id1084034376" />
+      <Loader />
     );
 
   return (
@@ -90,10 +108,13 @@ const Category = (props) => {
       </div>
       <br /> <hr />
       {!data ? (
+        <>
         <Loader />
+        <h1>elig</h1>
+        </>
       ) : (
         <>
-          {data.operation.length === 0 ? (
+          {data.operations.length === 0 ? (
             <div className="text-center">
               <h1>You did not register any movement </h1>
               <img
@@ -103,8 +124,8 @@ const Category = (props) => {
             </div>
           ) : (
             <div className="text-center">
-              {data.operation
-                .slice(Math.max(data.operation.length - props.large, 0))
+              {data.operations
+                .slice(Math.max(data.operations.length - props.large, 0))
                 .reverse()
                 .map((el, index) => (
                   <ItemOperation key={el._id} dataEl={el} />

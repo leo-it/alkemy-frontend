@@ -30,7 +30,7 @@ const Balance = () => {
   })
 }
   
-useEffect(getOperations, []);
+useEffect(getOperations, [token]);
 
 
   let egress = 0;

@@ -36,11 +36,11 @@ export const Navbar = ({ token }) => {
                 </a>
               </div>
             )}
-            {/* <div className="navbar-nav">
+            <div className="navbar-nav">
               <a className="nav-link" href="/category">
                 Categories
               </a>
-            </div> */}
+            </div>
             { !token &&
 
             <div className="navbar-nav">
