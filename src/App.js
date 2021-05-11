@@ -5,6 +5,7 @@ import Home from './components/Home'
 import Operations from './components/Operations'
 import Category from './components/Category'
 import Login from './components/Login'
+import Signup from './components/Signup'
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <Route path="/operations" component={Operations}/>
       <Route path="/category" component={Category}/>
       <Route path="/login" component={Login}/>
+      <Route path="/signup" component={Signup}/>
 
     </Switch>
     </BrowserRouter>

@@ -56,6 +56,13 @@ export const Navbar = ({ token }) => {
                 </a>
               </div>
             )}
+            {!token && (
+              <div className="navbar-nav">
+                <a className="nav-link" href="/signup">
+                  Signup
+                </a>
+              </div>
+            )}
           </div>
         </div>
       </nav>

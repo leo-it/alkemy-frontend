@@ -89,7 +89,6 @@ const Category = (props) => {
       {!data ? (
         <>
           <Loader />
-          <h1>elig</h1>
         </>
       ) : (
         <>
