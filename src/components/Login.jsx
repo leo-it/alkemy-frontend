@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Navbar } from "./Navbar";
 import { urlApi } from "../constants/urls";
 import { Redirect } from "react-router-dom";
-import Signup from "./Signup";
 import "./Login.css"
 import swal from "sweetalert";
 
