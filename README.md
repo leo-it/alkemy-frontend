@@ -1,4 +1,6 @@
 
+Video explicando mi aplicacion: https://youtu.be/UZ2wbhfiGoM
+
 Challenge JS
 
 Objetivo
